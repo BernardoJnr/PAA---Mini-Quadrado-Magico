@@ -27,6 +27,14 @@ def resolve_quadrado(matriz, num_usado, index):
     # Se o índice é 9, significa que todas as 9 células foram preenchidas.
     if index == 9:
         return checa_validade(matriz) 
+        """
+        DESCOMENTE o if para imprimir todas as soluções possíveis 
+        if checa_validade(matriz):
+            print("\nSolução encontrada:")
+            for row in matriz:
+                print(f"[{row[0]:^3} {row[1]:^3} {row[2]:^3}]")
+        return 
+        """
 
     # --- Passo Recursivo ---
     linha = index // 3  # Divisão inteira dá a linha (0, 1 ou 2)
@@ -61,10 +69,8 @@ matriz = [[0 for _ in range(3)] for _ in range(3)]
 used = [False] * 10
 
 # 3. Chama a função de backtracking começando da primeira célula (índice 0)
-if resolve_quadrado(matriz, used, 0):
-    print("\nSolução encontrada:")
-    # 4. Imprime o grid formatado se uma solução foi encontrada
-    for row in matriz:
-        print(f"[{row[0]:^3} {row[1]:^3} {row[2]:^3}]")
-else:
-    print("Nenhuma solução foi encontrada.")
+resolve_quadrado(matriz, used, 0)
+
+#COMENTE QUANDO FOR EXIBIR TODAS AS SOLUÇÕES POSSIVEIS
+for row in matriz:
+    print(f"[{row[0]:^3} {row[1]:^3} {row[2]:^3}]")
